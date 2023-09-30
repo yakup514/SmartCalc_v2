@@ -53,6 +53,8 @@ void DebitCalcView::CBChanged() {
 }
 
 void DebitCalcView::CalcButtonClicked() {
+    if (!ui->percent_le->text().isEmpty() && !ui->sum_le->text().isEmpty()
+            && !ui->period_le->text().isEmpty() && !ui->rep_sum_le->text().isEmpty()) {
     bool curr_is_rub = true;
     if (ui->curr_qb->currentIndex() == 1)
         curr_is_rub = false;
@@ -93,7 +95,7 @@ void DebitCalcView::CalcButtonClicked() {
     ui->pays_graph_btn->setVisible(true);
     FillTable(kap_per, deposit_rep_term, kapitalization, deposit_rep);
     MakeDonutChart((qreal)sum, (qreal)model->GetDepositRepSumm(), (qreal)model->GetPercentSumm(), (qreal)model->GetTaxSumm());
-
+    }
 }
 
 void DebitCalcView::PaysGraphButtonClicked() {
@@ -113,7 +115,7 @@ void DebitCalcView::PaysGraphButtonClicked() {
 
 void DebitCalcView::FillTable(int kap_per, int deposit_rep_term,  bool kapitalization, double deposit_rep) {
     table_model->clear();
-     QStandardItem* item;
+    QStandardItem* item;
     QStringList horizontalHeader;
     horizontalHeader.append("Дата \nрасчета");
     horizontalHeader.append(" Начислено \n процентов, \n" + ui->curr_qb->currentText());

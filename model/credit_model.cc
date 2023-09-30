@@ -21,6 +21,7 @@ void CreditModel::ClearData() noexcept {
 }
 
 double CreditModel::Calculate() {
+    ClearData();
     rem_debt_.push_back(summ_);
     per_paid_.push_back(0.0);
     month_paid_.push_back(0.0);

@@ -24,7 +24,12 @@ public:
     void SetData(double summ, int term, std::tm start, double rate, bool type) noexcept;
     void ClearData() noexcept;
     double Calculate();
-    
+    double GetPercSumm() {
+        double res = 0;
+        for (auto v : per_paid_)
+            res += v;
+        return res;
+    }
 };
 
 #endif // CREDITMODEL_H

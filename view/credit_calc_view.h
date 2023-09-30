@@ -2,7 +2,8 @@
 #define CREDIT_CALC_VIEW_H
 
 #include <QWidget>
-
+#include "../model/credit_model.h"
+#include "QStandardItemModel"
 namespace Ui {
 class CreditCalcView;
 }
@@ -17,6 +18,11 @@ public:
 
 private:
     Ui::CreditCalcView *ui;
+    CreditModel* model;
+    QStandardItemModel* table_model;
+private slots:
+    void CalcBtnClicked();
+    void FillTable();
 };
 
 #endif // CREDIT_CALC_VIEW_H

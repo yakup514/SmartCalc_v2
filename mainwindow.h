@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMenuBar>
+#include "view/credit_calc_view.h"
 #include "view/default_calc_view.h"
 #include "view/debit_calc_view.h"
 
@@ -15,6 +16,7 @@ public:
     ~MainWindow();
     DefaultCalcView* def_calc;
     DebitCalcView* deb_calc;
+    CreditCalcView* cred_calc;
 
     QMenuBar* mbar_;
 public slots:
