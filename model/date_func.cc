@@ -7,11 +7,11 @@ double GetTimeDiff(std::tm start, std::tm fin) {
 }
 
 int GetDaysInYearQua(std::tm date) {
-    if (date.tm_year % 400 == 0)
+    if ((date.tm_year + 1900) % 400 == 0)
         return 366;
-    else if (date.tm_year % 100 == 0)
+    else if ((date.tm_year + 1900) % 100 == 0)
         return 365;
-    else if (date.tm_year % 4 == 0)
+    else if ((date.tm_year + 1900) % 4 == 0)
         return 366;
     else
         return 365;

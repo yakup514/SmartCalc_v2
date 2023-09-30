@@ -107,8 +107,9 @@ void DebitModel::Calculate() {
 
             std::tm tmp = start_;
             tmp.tm_mon = (start_.tm_mon + i) % 12;
-            tmp.tm_mday = start_.tm_mday > GetDaysInMonthQua(tmp) ? GetDaysInMonthQua(tmp) : start_.tm_mday;
             tmp.tm_year = (start_.tm_mon + i) / 12 + start_.tm_year;
+            tmp.tm_mday = start_.tm_mday > GetDaysInMonthQua(tmp) ? GetDaysInMonthQua(tmp) : start_.tm_mday;
+            
         if (curr_is_rub_ && rate_ > 18.0) {
             tax += (GetPersEarnedByPeriod(rate_, time_.back(), tmp) - GetPersEarnedByPeriod(18.0, time_.back(), tmp)) * 0.35;
         } else if (!curr_is_rub_ && rate_ > 9) {

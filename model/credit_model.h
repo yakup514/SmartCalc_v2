@@ -12,11 +12,19 @@ class CreditModel{
     std::tm start_;
     double rate_;
     bool type_anyit_;
-    
+   
     
 public:
     CreditModel();
+    std::vector<std::tm> time_;
+    std::vector<double> per_paid_;
+    std::vector<double> main_debt_paid_;
+    std::vector<double> month_paid_;
+    std::vector<double> rem_debt_;
     void SetData(double summ, int term, std::tm start, double rate, bool type) noexcept;
+    void ClearData() noexcept;
+    double Calculate();
+    
 };
 
 #endif // CREDITMODEL_H

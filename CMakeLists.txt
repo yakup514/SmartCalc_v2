@@ -27,6 +27,8 @@ set(PROJECT_SOURCES
         model/calc_model.cc
         model/debit_model.h
         model/debit_model.cc
+        model/date_func.cc
+        model/date_func.h
         view/graph_window.h
         view/graph_window.cc
         view/graph_window.ui
@@ -34,6 +36,7 @@ set(PROJECT_SOURCES
         controller/graph_controller.cc
         view/debit_calc_view.h view/debit_calc_view.cc view/debit_calc_view.ui
         model/credit_model.h model/credit_model.cc
+        view/credit_calc_view.h view/credit_calc_view.cc view/credit_calc_view.ui
 )
 
 add_subdirectory(ExtLib/qcustomplot)
