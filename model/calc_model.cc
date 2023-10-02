@@ -181,8 +181,8 @@ double CalcModel::GetResult() {
             }
         }
     }
-//    if (temp.size() > 1)
-//        throw std::invalid_argument("probably missing operator");
+    if (temp.size() > 1)
+        throw std::invalid_argument("probably missing operator");
     return temp.top();
 }
 

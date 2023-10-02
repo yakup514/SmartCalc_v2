@@ -31,6 +31,6 @@ style:
 	clang-format -n *.h
 	
 git:
-	git add *.cpp *.h *.cc model/*.cc model/*.h view/*.cc view/*.h ExtLib/
+	git add *.cpp *.h *.cc model/*.cc model/*.h view/*.cc view/*.h ExtLib/ model/tests/*.h
 	git add Makefile
 	
