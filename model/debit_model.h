@@ -19,7 +19,7 @@ class DebitModel {
    
    // double GetTimeDiff(std::tm start, std::tm fin);
 //    double GetDaysInYearQua(std::tm date);
-    double GetPersEarnedByPeriod(double rate, std::tm start, std::tm fin);
+    double GetPersEarnedByPeriod(double rate, std::tm fin);
 //    int GetDaysInMonthQua(std::tm date);
     std::vector<std::tm> time_;
     

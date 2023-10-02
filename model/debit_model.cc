@@ -54,41 +54,11 @@ void DebitModel::SetData(double summ, int term, std::tm start, double rate, int 
     deposit_rep_term_ = deposit_rep_term;
 
 }
-//double DebitModel::GetTimeDiff(std::tm start, std::tm fin) {
-//    std::time_t x = std::mktime(&start);
-//    std::time_t y = std::mktime(&fin);
-//    if (x == (std::time_t)(-1) || y == (std::time_t)(-1)){
-//        throw std::invalid_argument("wrong date");
-//    }
-//    return std::difftime(y, x) / (60 * 60 * 24);
-//}
-//double DebitModel::GetDaysInYearQua(std::tm date) {
-//    if (date.tm_year % 400 == 0)
-//        return 366;
-//    else if (date.tm_year % 100 == 0)
-//        return 365;
-//    else if (date.tm_year % 4 == 0)
-//        return 366;
-//    else
-//        return 365;
-//}
-//int DebitModel::GetDaysInMonthQua(std::tm date) {
-//    if(date.tm_mon == 0 || date.tm_mon == 2 || date.tm_mon == 4 || date.tm_mon == 6 || date.tm_mon == 7 || date.tm_mon == 9 || date.tm_mon == 11)
-//            return 31;
-//        else if(date.tm_mon == 3 || date.tm_mon == 5 || date.tm_mon == 8 || date.tm_mon == 10)
-//            return 30;
-//        else {
-//            if (GetDaysInYearQua(date) == 366)
-//                return 29;
-//            else
-//                return 28;
-//        }
-//        
-//}
 
-double DebitModel::GetPersEarnedByPeriod(double rate, std::tm start, std::tm fin) {
+
+double DebitModel::GetPersEarnedByPeriod(double rate, std::tm fin) {
     double perc_earned = 0;
-    start.tm_mday = 1;
+    
     std::tm last_day = time_.back();
     last_day.tm_mday = GetDaysInMonthQua(time_.back());
     std::tm first_day = fin;
@@ -111,11 +81,11 @@ void DebitModel::Calculate() {
             tmp.tm_mday = start_.tm_mday > GetDaysInMonthQua(tmp) ? GetDaysInMonthQua(tmp) : start_.tm_mday;
             
         if (curr_is_rub_ && rate_ > 18.0) {
-            tax += (GetPersEarnedByPeriod(rate_, time_.back(), tmp) - GetPersEarnedByPeriod(18.0, time_.back(), tmp)) * 0.35;
+            tax += (GetPersEarnedByPeriod(rate_, tmp) - GetPersEarnedByPeriod(18.0,  tmp)) * 0.35;
         } else if (!curr_is_rub_ && rate_ > 9) {
-            tax += ((GetPersEarnedByPeriod(rate_, time_.back(), tmp) - GetPersEarnedByPeriod(9.0, time_.back(), tmp)) * 0.35);
+            tax += ((GetPersEarnedByPeriod(rate_,  tmp) - GetPersEarnedByPeriod(9.0,  tmp)) * 0.35);
         }
-        perc_earned += GetPersEarnedByPeriod( rate_, time_.back(), tmp);
+        perc_earned += GetPersEarnedByPeriod( rate_,  tmp);
         time_.push_back(tmp);
         if ((i % kap_per_ == 0 || i == term_ )) {
             if (kapitalization_) {
