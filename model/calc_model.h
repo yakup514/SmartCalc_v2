@@ -6,8 +6,7 @@
 #include <vector>
 #include <stack>
 #include <unordered_set>
-
-
+#include <cmath>
 #include <iostream>
 static const std::unordered_set<std::string> kFunctions = {"sin",  "cos",  "tan", "acos", "asin", "atan", "sqrt", "ln",  "log"};
 namespace s21 {
