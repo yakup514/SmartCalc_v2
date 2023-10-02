@@ -124,4 +124,14 @@ TEST(err, test6) {
     }
 }
 
+TEST(err, test7) {
+    try {
+        s21::CalcModel model("");
+        model.SetInputStr("1(1)");
+        model.GetResult();
+    } catch (const std::invalid_argument& ex) {
+        EXPECT_STREQ(ex.what(), "probably missing operator");
+    }
+}
+
 

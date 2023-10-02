@@ -1,8 +1,15 @@
 #include "date_func.h"
 
 double GetTimeDiff(std::tm start, std::tm fin) {
-    std::time_t x = std::mktime(&start);
-    std::time_t y = std::mktime(&fin);
+    std::tm tmp1{}, tmp2{};
+    tmp1.tm_mday = start.tm_mday;
+    tmp1.tm_mon = start.tm_mon;
+    tmp1.tm_year = start.tm_year;
+    tmp2.tm_mday = fin.tm_mday;
+    tmp2.tm_mon = fin.tm_mon;
+    tmp2.tm_year = fin.tm_year;
+    std::time_t x = std::mktime(&tmp1);
+    std::time_t y = std::mktime(&tmp2);
     return std::difftime(y, x) / (60 * 60 * 24);
 }
 
